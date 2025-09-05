@@ -93,3 +93,4 @@ TWISTED_REACTOR = "twisted.internet.asyncioreactor.AsyncioSelectorReactor"
 PLAYWRIGHT_LAUNCH_OPTIONS = {
     "headless": False,
 } 
+LOG_LEVEL = 'WARNING'
