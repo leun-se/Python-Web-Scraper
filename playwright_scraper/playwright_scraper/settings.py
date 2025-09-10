@@ -58,9 +58,9 @@ DOWNLOAD_DELAY = 1
 
 # Configure item pipelines
 # See https://docs.scrapy.org/en/latest/topics/item-pipeline.html
-#ITEM_PIPELINES = {
-#    "playwright_scraper.pipelines.PlaywrightScraperPipeline": 300,
-#}
+ITEM_PIPELINES = {
+    "playwright_scraper.pipelines.MongoPipeline": 300,
+}
 
 # Enable and configure the AutoThrottle extension (disabled by default)
 # See https://docs.scrapy.org/en/latest/topics/autothrottle.html
@@ -94,3 +94,6 @@ PLAYWRIGHT_LAUNCH_OPTIONS = {
     "headless": False,
 } 
 LOG_LEVEL = 'WARNING'
+
+MONGO_URI = "mongodb://localhost:27017"
+MONGO_DATABASE = "shoes_db"
