@@ -44,6 +44,12 @@ class NikeFootwearSpider(scrapy.Spider):
         )
 
     def parse(self, response):
+        """
+    @url https://www.nike.com/w/shoes-y7ok
+    @returns items 24 24
+    @returns request 0 1
+    @scrapes url name subtitle price 
+        """
         for product in response.css("div.product-card__body"):
             item = PlaywrightScraperItem()
             item["name"] = product.css("div.product-card__title::text").get()
@@ -58,4 +64,11 @@ class NikeFootwearSpider(scrapy.Spider):
             self.logger.info(
                 f"Navigating to next page with URL {next_page_url}."
             )
-            yield scrapy.Request(url=next_page_url, callback=self.parse)
+            yield scrapy.Request(
+                url=next_page_url, 
+                callback=self.parse,
+                errback=self.log_error,
+            )
+            
+    def log_error(self, failure):
+        self.logger.error(repr(failure))
