@@ -16,3 +16,4 @@ class PlaywrightScraperItem(scrapy.Item):
     price = scrapy.Field()
     subtitle = scrapy.Field()
 
+#test
